@@ -24,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 	 didScrollInPage:(NSInteger)page
 			andPoint:(CGPoint)point
 		   andSource:(LineChartDrawModel *)chartModel;
+
+//从外部获取自定义气泡  可以继承 TipBubble  进行设置不同
+-(TipBubble *)tipBubbleWithLineChart:(LineChartView *)chartView;
+
 @end
 
 /** ===================================================================== */

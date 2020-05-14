@@ -348,9 +348,14 @@
 -(TipBubble *)tip
 {
 	if (!_tip) {
-		_tip = [[TipBubble alloc]init];
-		_tip.bounds = CGRectMake(0, 0, 60, 40);
-		_tip.drawColor = [[UIColor redColor]colorWithAlphaComponent:0.5];
+		if ([self.delegate respondsToSelector:@selector(tipBubbleWithLineChart:)]) {
+			_tip = [self.delegate tipBubbleWithLineChart:self];
+		}
+		if (!_tip) {
+			_tip = [[TipBubble alloc]init];
+			_tip.bounds = CGRectMake(0, 0, 60, 40);
+			_tip.drawColor = [[UIColor redColor]colorWithAlphaComponent:0.5];
+		}
 		[self addSubview:_tip]; //添加到指定位置
 	 }
 	return _tip;
